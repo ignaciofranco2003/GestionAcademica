@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div class="title-bar">
+        <h1>Gestión Académica</h1>
+    </div>
+    
+    <div id="cards-container">
+        <a href="/sistema_gestion/estudiantes">
+            <div class="cards">
+                <div class="cards-info">
+                    <img src="" th:src="@{/img/person-icon.png}" class="cards-img">
+                    <p class="cards-text">Estudiantes</p>
+                </div>
+            </div>
+        </a>
+        <a href="/sistema_gestion/cursos">
+            <div class="cards">
+                <div class="cards-info">
+                    <img src="" th:src="@{/img/courses-icon.png}" class="cards-img">
+                    <p class="cards-text">Cursos</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Botón de Logout -->
+    <form id="logoutForm" action="/sistema_gestion/logout" method="get">
+        <button type="submit" class="logout-button">Cerrar sesión</button>
+    </form>
+</body>
+
+</html>

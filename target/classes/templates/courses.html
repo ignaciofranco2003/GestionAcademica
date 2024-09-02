@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Cursos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var message = /*[[${message}]]*/ 'null';
+            var messageType = /*[[${messageType}]]*/ 'null';
+
+            if (message !== 'null') {
+                alert(message);
+            }
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark" style="padding: 10px;">
+        <a class="navbar-brand" href="/sistema_gestion"> Volver a Gestión Académica</a>
+    </nav>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <h1>Lista de Cursos</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{/cursos/nuevo}" class="btn btn-primary btn-sm mb-3">Agregar curso</a>
+            </div>
+        </div>
+
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="course : ${courses}">
+                <td th:text="${course.courseName}">Nombre</td>
+                <td th:text="${course.description}">Descripción</td>
+                <td>
+                    <a th:href="@{/cursos/estudiantes/{id}(id=${course.courseId})}" class="btn btn-primary">Ver</a>
+                    <a th:href="@{/cursos/editar/{id}(id=${course.courseId})}" class="btn btn-info">Editar</a>
+                    <a th:href="@{/cursos/eliminar/{id}(id=${course.courseId})}" onclick="return confirm('¿Estás seguro de que quieres eliminar este curso?');" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Mensajes de éxito y error -->
+    <div style="position: fixed; bottom: 20px; width: 100%; text-align: center;">
+        <div th:if="${messageType == 'success'}" class="alert alert-success alert-sm" role="alert" style="display: inline-block; padding: 0.5rem 1rem;">
+            <span th:text="${message}"></span>
+        </div>
+
+        <div th:if="${messageType == 'error'}" class="alert alert-danger alert-sm" role="alert" style="display: inline-block; padding: 0.5rem 1rem;">
+            <span th:text="${message}"></span>
+        </div>
+    </div>
+</body>
+</html>

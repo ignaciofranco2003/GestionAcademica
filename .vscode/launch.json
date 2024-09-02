@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "GestionAcademicaApplication",
+            "request": "launch",
+            "mainClass": "com.poo.GestionAcademica.GestionAcademicaApplication",
+            "projectName": "GestionAcademica"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GestionAcademicaApplication<GestionAcademica>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.poo.GestionAcademica.GestionAcademicaApplication",
+            "projectName": "GestionAcademica",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
